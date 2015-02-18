@@ -1,0 +1,17 @@
+{
+  "name": "KillRobotsLearnMath",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "dependencies": {
+    "http-server": "^0.7.4"
+  },
+  "devDependencies": {
+    "http-server": "^0.7.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

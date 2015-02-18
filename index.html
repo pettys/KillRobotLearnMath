@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Kill Robot Learn Math</title>
+	<style>
+		body {
+			font-family: monospace;
+			color: #ddddff;
+			background-color: #333333;
+		}
+		#viewport {
+			width: 800px;
+			height: 600px;
+			border: 2px solid gray;
+			margin: auto;
+			overflow: hidden;
+			background-color: #222222;
+			cursor: crosshair;
+		}
+		#landscape {
+			height: 800px;
+			width: 2400px;
+			background-image: url('sprites/landscape.png');
+			transition: opacity 2s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<div id="viewport">
+		<div id="landscape" style="display: none;"></div>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
