@@ -3,6 +3,9 @@ var ls = document.getElementById('landscape');
 var vp = document.getElementById('viewport');
 var lastFrameTick = 0;
 var keys = {};
+var enemyCountDown = 1000;
+var enemy = null;
+
 document.addEventListener('keydown', function(e) {
 	keys[e.keyCode.toString()] = true;
 });
@@ -38,4 +41,36 @@ function gameLoop() {
 		vp.scrollLeft = newLeft;
 	}
 	
+	if(!enemy) {
+		enemyCountDown -= ticks;
+		if(enemyCountDown <= 0) {
+			enemy = spawnEnemy();
+		}
+	} else {
+		enemy.sprite.tick(ticks);
+	}
+	
+}
+
+function spawnEnemy() {
+	var div = document.createElement('div');
+	div.className = 'wall-crusher';
+	div.sprite = {
+		x: 1200,
+		dist: 1000,
+		tick: function(ticks) {
+			var dist = div.sprite.dist - ticks * .02;
+			if(dist < 0) dist = 0;
+			div.sprite.dist = dist;
+			
+			div.style.left = div.sprite.x + 'px';
+			var ratio = (1000-dist)*(1000-dist)/1000000;
+			div.style.top = 220 + (350 * ratio) + 'px';
+			var scale = .01 + .5 * ratio;
+			div.style.transform = 'scale(' + scale + ', ' + scale + ')';
+		}
+	};
+	div.sprite.tick(0);
+	ls.appendChild(div);
+	return div;
 }
